@@ -8,7 +8,7 @@ void printArray(int* arr, int len);
 
 int main() {
 
-    int arr[ARRAY_SIZE];
+    int arr[ARRAY_SIZE] = {0};
 
     for(int i = 0; i < ARRAY_SIZE; i++){
         scanf("%d", (arr + i));
