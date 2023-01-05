@@ -8,9 +8,9 @@ int similarWords(char *word, char *keyword);
 
 int main() {
 
-    char keyword[WORD];
-    char decision;
-    char line[LINE];
+    char keyword[WORD] = {0};
+    char decision = 'c';
+    char line[LINE] = {0};
 
     // Get the keyword and decision.
     scanf("%s %c", keyword, &decision);
@@ -25,7 +25,7 @@ int main() {
 
     // Decision == 'b' (instructions are to assume valid input).
     } else {
-        char word[WORD];
+        char word[WORD] = {0};
 
         // Scan the text word by word, until the end of the document.
         // If a word's length is equals or longer by one than the keyword's, check similarity.
