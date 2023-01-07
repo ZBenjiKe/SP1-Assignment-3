@@ -4,7 +4,7 @@
 #define LINE 256
 #define WORD 30
 
-int similarWords(char *word, char *keyword);
+int similarWords(char *word, char *keyword, int len);
 
 int main() {
 
@@ -21,19 +21,20 @@ int main() {
             if(strstr(line, keyword) != NULL) {
                 printf("%s", line);
             }
-        bzero(line, LINE);
+            bzero(line, LINE);
         }
 
     // Decision == 'b' (instructions are to assume valid input).
     } else {
         char word[WORD] = {0};
+        int len = strlen(keyword);
 
         // Scan the text word by word, until the end of the document.
         // If a word's length is equals or longer by one than the keyword's, check similarity.
         // If the word is similar to the keyword, print the word.
         while(scanf("%s", word) > 0) {
             if(strlen(word) == strlen(keyword) || strlen(word) == strlen(keyword) + 1) {
-                if(similarWords(word, keyword)) {
+                if(similarWords(word, keyword, len)) {
                     printf("%s\n", word);
                 }
             }
@@ -47,11 +48,10 @@ int main() {
 // Function to check similarity of a word to the keyword.
 // Option 1: they match exactly.
 // Option 2: if a single letter is omitted from the word, it will match to the keyword.
-int similarWords(char *word, char *keyword){
+int similarWords(char *word, char *keyword, int len){
     
     int result = 0;
     int letter = 0;
-    int len = strlen(keyword);
 
     // Word is same length as keyword, so all letters must match exactly.
     if(strlen(word) == len){
